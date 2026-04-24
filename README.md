@@ -77,3 +77,47 @@ Usa los comandos:
 #### Cambios 
 - git push origin <rama> (Empuja los commits al servidor apodado origin a la rama de mi codigo).
 - git pull origin <rama> (Traer los commits).
+
+## Clase 4
+### Remote SSH multiple y checkout
+#### Git remote
+Este comando nos ayuda a gestionar nuestras conexiones con repositorios remotos, los comandos que puedes usar son:
+- git remote -v : Para ver las URLs de donde apunta nuestro repositorio.
+- git remote add <apodo> "url" : para vincular nuestro repositorio local con uno en la nuve.
+- git remote set-url <apodo> "url" : para cambiar la url de donde apunta nuestro repsitorio.
+#### Multiples SSH
+Cuando tenemos otras cuentas en github o simplemente necesitamos más cuentas tenemos que tener mas de una llave SSH.
+Para configurar los multiples SSH seguimos estos pasos:
+1. Generamos el ssh key con otro nombre: 
+        ssh-keygen -t ed25519 -C
+        "nuestroCorreo" -f~/.ssh/id_miname
+2. Creamos un archivo config para que las llaves no choquen:
+        # Nuestra cuenta personal
+            Host github.com (Host: es el apodo que se le pone a la conexión)
+            HostName github.com (HostName: es la direccion real del servidor)
+            User git (User: nombre de usuario del sistema remoto)
+            IdentityFile~/.ssh/id_ed25519 (IdentifyFile: es la ruta exacta a la llave privada)
+        # La cuenta de otro correo
+            Host github-miname
+            HostName github.com
+            User git
+            IdentityFile~/.ssh/id_miname
+3. Para ver si funciona
+        ssh-T git@github-miname
+Para hacer configuraciones por repositorio (locales) es lo mismo que hacer como las globales pero sin --global los comados son:
+- git config user.name "Nuevo nombre"
+- git config user.email "Mi correo"
+Algo importante es hacer git clone solo con el host correcto de tu cuenta.
+- git clone git@github-miname:usuario/repo.gti
+#### Git Checkout
+Es para desplazar el HEAD hacia un punto especifico del historia o una rama distinta. Esto nos sirve para inspeccionar como era el contenido
+de un commitantiguo, recuperar los archivos borrados o cambiados, probar cambios sin llegar ha arruinar la rama principal y para saltar d una rama a otra.
+El estado "Detached HEAD" aqui lo normal es que el HEADapunte a una rama en movimiento pero en su lugar apunta a un commit fijo.
+Para ir y volver de commit usamos: git checkout <hash_antiguo> y git checkout <rama>. Cuidado porque si hiciste un commit aqui va ha 
+desaparecer amenos que hagas: git checkout <hash_commit_creado> y git checkout -b rama_nueva.
+##### Buenas practicas del Checkout
+1. No trabajes por largo tiempo en "Detached HEAD", si ecribes mas de una linea trabaja en otra rama.
+2. Siempre limpia tu directorio de trabajo, siempre has commit de lo que estas haciendo en el presente.
+3. Usalo para aprender para entender como crecieron.
+
+            
