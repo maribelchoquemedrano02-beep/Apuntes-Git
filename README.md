@@ -4,8 +4,7 @@ Maribel Choque Medrano
 ### ¿Qúe es Git?
 Git es un sistema que controla las versiones y guarda archivos pero de manera local.
 ### ¿Cómo nació GIT?
-Fue creado por Linus Torvals porque BitKeeper le retiro la licencia por incumplir la regla de "No usaras ni tu ni tus colaboradores otro ademas de mi", creando git en 2 a 3 semanas
-![Creador de GIT][https://i.blogs.es/9237cf/linus_torvalds/450_1000.jpg]
+Fue creado por Linus Torvals porque BitKeeper le retiro la licencia por incumplir la regla de "No usaras ni tu ni tus colaboradores otro ademas de mi", creando git en 2 a 3 semanas.
 ### ¿Como intalar Git?
 Primero escribes en cualquier navegador "Downloads Git" una ves instalado para verificar en la terminal escribes git --version.
 #### Las configuraciones basicas
@@ -79,7 +78,7 @@ Usa los comandos:
 - git pull origin <rama> (Traer los commits).
 
 ## Clase 4
-### Remote SSH multiple y checkout
+### Remote, SSH multiple y checkout
 #### Git remote
 Este comando nos ayuda a gestionar nuestras conexiones con repositorios remotos, los comandos que puedes usar son:
 - git remote -v : Para ver las URLs de donde apunta nuestro repositorio.
@@ -120,4 +119,38 @@ desaparecer amenos que hagas: git checkout <hash_commit_creado> y git checkout -
 2. Siempre limpia tu directorio de trabajo, siempre has commit de lo que estas haciendo en el presente.
 3. Usalo para aprender para entender como crecieron.
 
-            
+## Clase 5
+### Ramas y GitFlow Basico
+Las ramas y GitFlow es lo mas importante en para trabajar en equipo.
+### ¿Qué son las ramas?
+Las ramas son las principales utilidades para poder tener un mejor control del codigo que escribimos. Esto trata de dividir la rama principal (main o marter) para que podamos trabajar en nuevas caracteristicas y correcciones.
+Para usar usar ramas usamos el comando "git branch" que nos ayuda a gestionar las ramas que tenemos o tendremos, los comados son:
+- git branch : lista las ramas que tenemos y ver el posicionamiento actual del HEAD.
+- git branch <rama> : es para crear una rama apartir de la rama que estamos posicionando.
+- git branch -D <rama> : es para eliminar la rama.
+#### Git Checkout enfocado en ramas
+Se usa esencialmente para ver los archivos pasados mediante los commits, pero tambien puede usarse junto a las ramas para:
+- Para cambiar de rama pero sin tener nada en modified/untracked o staged, el comando es: git checkout <rama>.
+- Para crear la rama y movernos directamente a ella, el comado es: git checkout -b <rama>.
+#### Git checkout vs git switch
+Git checkout es multiproposito y te puede dejar en Detached HEAD facilmente ademas estaba sobrecargado. Por esta razon en 2019  se introdujo git switch para solo especializarse en ramas y evitar errores accidentales al moverse.
+###  Gitflow Basico
+Es un flujo de trabajo que nos permite trabajar ordenadamente con las ramas, versiones y con cualquier persona que quiera aportar en nuestro proyecto.
+La forma en que funciona es:
+- main.- Por defecto tenemos la rama main (o master) al crear el repositorio que contiene el codigo que se encuentra en producción.
+- develop.- Esta es la rama de pre-producción esta tiene las caracteristicas que se estan probando que se lanzarán a producion pronto.
+- Ramas de apoyo.- son las que nos permiten escribir nuestro codigo y son:
+        feature/*: Esta nace de develop y es para realizar una tarea especifica.
+        release/*: Esta nace de develop y muere en develop y main, es donde hacemos pruebas (QA).
+        hotflix/*: Esta nace en main y es donde se arreglan los bugs o un problema en producción.
+
+
+
+
+
+
+
+
+
+
+
