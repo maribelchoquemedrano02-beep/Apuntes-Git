@@ -143,13 +143,29 @@ La forma en que funciona es:
         feature/*: Esta nace de develop y es para realizar una tarea especifica.
         release/*: Esta nace de develop y muere en develop y main, es donde hacemos pruebas (QA).
         hotflix/*: Esta nace en main y es donde se arreglan los bugs o un problema en producción.
-
-
-
-
-
-
-
+## Clase 6
+### Git Fetch, Pull, Push y Merge
+Cuando trabajas en equipo en un proyecto haces cambios en tu rama pero luego esos cambios hechos se 
+tienen que integrar al proyecto principal para mantenerse actualizados, los comandos que se usan son:
+- git fetch: Te permite ver los cambios que se hicieron en la rama y sus ramas hijas, git fetch origin con esto vemos los cambios antes de mezclar y asi evitar conflictos inesperados.
+- git pull: Es para actualizar el proyecto donde se descargan los cambios que se tienen en el repositorio remoto de esa rama, git pull origin rama es para poner al dia pero si hay muchos cambios genera conflictos.
+- git push: es para subir el trabajo que yo hice con mis cambios al repositorio remoto, git push origin rama pero si no es tu repositorio y es la primera ves que haces push de tu rama tienes que hacerlo con git push -u rama.
+- git merge: Es para fusionar las ramas donde se une los cambios de una rama con otra, git merge rama. el git merge --no-ff rama este fuerza para crear un commit de merge y haci no perder el historial de las ramas
+### Flujo real en equipo
+Actualizas el proyecto:
+        git checkout develop
+        git fetch
+        git pull origin develop
+        git merge --no-ff rama
+Luego trabajas y haces commits:
+        git add .
+        git commit
+        git push origin develop
+Integras:
+        git checkout develop
+        git pull origin develop
+        git merge --no-ff mi-feature
+        git push origin develop
 
 
 
