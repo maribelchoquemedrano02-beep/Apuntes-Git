@@ -219,3 +219,61 @@ Fork + Pull Request
         Subir a tu repositorio
         Crear PR hacia el repositorio original
 Así cualquiera puede contribuir a proyectos públicos.
+
+## Clase 8
+### Git stash, Git diff y que hacer si un PR previo causo conflictos en mi PR
+#### ¿Qué pasa cuando aprueban un PR que modifica lo mismo que tú?
+Cuando otro Pull Request (PR) se aprueba antes que el tuyo y toca las mismas líneas:
+- Tu rama queda **desactualizada**
+- Puede haber **conflictos**
+- Debes sincronizarte con la rama principal (main o develop)
+La Solución correcta paso a paso es:
+1. Guardar tus cambios (por si acaso)
+        git stash -m "mis cambios antes de actualizar"
+        Guarda temporalmente lo que hiciste sin hacer commit
+2. Actualizar tu repositorio
+        git checkout main
+        git pull origin main
+Traes los cambios del PR aprobado
+3. Volver a tu rama
+        git checkout mi-rama
+4. Integrar cambios nuevos
+
+Opción A (recomendada):
+        git merge main
+        git rebase main
+5. Recuperar tus cambios guardados
+        git stash pop
+Aquí pueden aparecer conflictos → los resuelves manualmente
+6. Subir cambios actualizados
+        git add .
+        git commit -m "conflictos resueltos"
+        git push
+#### COMANDOS GIT STASH
+- Guardar cambios: 
+        git stash (Guarda cambios sin commit)
+- Guardar con nombre
+        git stash -m "mensaje"
+- Ver lista de stashes
+        git stash list (Muestra todos los guardados)
+- Recuperar último stash
+        git stash pop (Aplica cambios y los elimina del stash)
+- Buena práctica
+Después de hacer merge del PR:
+        git branch -d mi-rama
+Elimina la rama local
+Mantiene el repositorio limpio
+#### COMANDOS GIT DIFF
+Sirve para ver diferencias entre cambios
+- Ver cambios no guardados
+        git diff: Cambios en archivos modificados (no añadidos)
+- Ver todo el proyecto
+        git diff .
+- Ver cambios en un archivo
+        git diff archivo.txt (Solo muestra diferencias de ese archivo)
+- Ver cambios ya añadidos
+git diff --staged (Cambios listos para commit)
+- Ver archivo en staging
+        git diff --staged archivo.txt
+- Comparar ramas
+        git diff rama1 rama2 (Diferencias entre dos ramas)
