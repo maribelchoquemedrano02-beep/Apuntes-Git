@@ -167,6 +167,55 @@ Integras:
         git merge --no-ff mi-feature
         git push origin develop
 
-
-
-
+## Clase 7
+### Pull Request
+Son llamados tambien como PRs con esto trabajas de forma mas profesional que te permite ver que que es lo que se quiere mergear o sino unir al codigo base que ya tenemos.
+#### ¿Por qué usamos PRs ?
+Cuando trabajas en equipo puedes usar PRs o no pero es necesario usarlo por temas de seguridad ya que si no lo usamos cualquier colaborador puede editar nuestro repositorio y mergear sin avisarnos. Por ejemplo un colaborador puede meter código malicioso o simplemente puede hacer algo mal y asi romper el proyecto. Gracias a los PRs el equipo es forzado a ver los cambios obligando al debate y deliberación, de esta manera tenemos un mejor manejo grupal del repositorio.
+##### Flujo de trabajo con Pull Requests
+1. Actualizar develop
+git checkout develop
+git fetch
+git pull origin develop
+2. Crear o cambiar a tu rama
+git checkout -b mi-rama   (o sin -b si ya existe)
+3. Trabajar en tu código  (editar archivos)
+4. Subir cambios
+git add .
+git commit -m "Mi cambio"
+git push -u origin mi-rama
+Antes de crear un PRs:
+        git checkout develop
+        git pull origin develop
+        git checkout mi-rama
+        git merge develop   (traer cambios actualizados)
+Resolver conflictos si hay
+        git add .
+        git commit
+        git push origin mi-rama
+#### ¿Cómo crear un PR?
+1. Ir a GitHub
+2. Entrar al repositorio 
+3. Aparecerá botón: "Compare & pull request"
+4. Agregar:
+        Título
+        Descripción
+5. Click en "Create pull request"
+#### ¿Cómo proteger mi repositorio y limitar la colaboración?
+Para evitar que alguien haga merge directo:
+1. Ir a Settings del repositorio, branches y Add branch ruleset.
+2. Activar reglas y proteger ramas principales (main y develop).
+3. Activar:
+        Restries updates
+        Require pull request before merging (tiene que aprovar la mitad mas uno del equipo).
+        Require approvals
+#### ¿Cómo colaborar sin ser colaborador?
+Se usa el flujo de:
+Fork + Pull Request
+        Hacer un Fork del repositorio
+        Clonar tu fork
+        Crear una rama
+        Hacer cambios
+        Subir a tu repositorio
+        Crear PR hacia el repositorio original
+Así cualquiera puede contribuir a proyectos públicos.
