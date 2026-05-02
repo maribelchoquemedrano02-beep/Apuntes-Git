@@ -1,5 +1,12 @@
 # Trabajo Individual
 Maribel Choque Medrano
+## Herramientas
+
+<p align="center">
+  <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" width="100">
+  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="100">
+</p>
+
 ## Clase 1
 ### ¿Qúe es Git?
 Git es un sistema que controla las versiones y guarda archivos pero de manera local.
